@@ -3,48 +3,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AMS Digital Helper: haeufige Fragen zu Arbeitslosengeld und Notstandshilfe in Klartext, mit Quelle. Demo und Prototyp.">
   <title>AMS Digital Helper (Demo)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a href="#main" class="skip-link" id="skip-link">Zum Inhalt springen</a>
   <header>
     <div class="bar">
       <strong id="brand">AMS Digital Helper</strong>
-      <label class="lang">
-        <span id="lang-label">Sprache</span>
+      <span class="lang">
+        <label for="lang" id="lang-label">Sprache</label>
         <select id="lang">
           <option value="de">Deutsch</option>
           <option value="en">English</option>
         </select>
-      </label>
+      </span>
     </div>
-    <p id="prototyp" class="warn"></p>
+    <p id="prototyp" class="warn" role="note"></p>
   </header>
 
-  <main>
-    <section id="faq-section">
+  <main id="main">
+    <section id="faq-section" aria-labelledby="titel">
       <h1 id="titel"></h1>
       <p id="hinweis" class="muted"></p>
+      <label for="suche" id="suche-label" class="visually-hidden">Frage suchen</label>
       <input id="suche" type="search" autocomplete="off">
-      <div id="faq"></div>
+      <p id="suche-status" class="muted" role="status" aria-live="polite"></p>
+      <div id="faq" aria-live="polite"></div>
     </section>
 
-    <section id="rechner-section">
+    <section id="rechner-section" aria-labelledby="rechner-titel">
       <h2 id="rechner-titel"></h2>
       <p id="rechner-hinweis" class="muted"></p>
       <form id="rechner-form">
-        <label data-l="netto"></label>
-        <input id="r-netto" type="number" min="0" step="50" value="2000">
-        <label data-l="kinder"></label>
-        <input id="r-kinder" type="number" min="0" step="1" value="0">
-        <label class="check"><input id="r-partner" type="checkbox"> <span data-l="partner"></span></label>
-        <label data-l="alter"></label>
-        <input id="r-alter" type="number" min="0" step="1" value="40">
-        <label data-l="wochen"></label>
-        <input id="r-wochen" type="number" min="0" step="1" value="200">
+        <label for="r-modus" data-l="modus"></label>
+        <select id="r-modus">
+          <option value="netto" data-l="modusNetto"></option>
+          <option value="brutto" data-l="modusBrutto"></option>
+        </select>
+
+        <label for="r-einkommen" id="r-einkommen-label"></label>
+        <input id="r-einkommen" type="number" min="0" step="50" value="2000" inputmode="numeric">
+
+        <span id="r-bundesland-row" class="full" hidden>
+          <label for="r-bundesland" data-l="bundesland"></label>
+          <select id="r-bundesland">
+            <option value="W">Wien</option>
+            <option value="NOE">Niederoesterreich</option>
+            <option value="OOE">Oberoesterreich</option>
+            <option value="ST">Steiermark</option>
+            <option value="T">Tirol</option>
+            <option value="K">Kaernten</option>
+            <option value="S">Salzburg</option>
+            <option value="V">Vorarlberg</option>
+            <option value="B">Burgenland</option>
+          </select>
+        </span>
+
+        <label for="r-kinder" data-l="kinder"></label>
+        <input id="r-kinder" type="number" min="0" step="1" value="0" inputmode="numeric">
+
+        <label class="check full"><input id="r-partner" type="checkbox"> <span data-l="partner"></span></label>
+
+        <label for="r-alter" data-l="alter"></label>
+        <input id="r-alter" type="number" min="0" step="1" value="40" inputmode="numeric">
+
+        <label for="r-wochen" data-l="wochen"></label>
+        <input id="r-wochen" type="number" min="0" step="1" value="200" inputmode="numeric">
+
         <button type="submit" data-l="rechnen"></button>
       </form>
-      <pre id="rechner-out"></pre>
+      <pre id="rechner-out" aria-live="polite"></pre>
     </section>
   </main>
 
