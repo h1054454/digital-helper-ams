@@ -44,6 +44,11 @@ h3 { font-size: 1rem; margin: 1.4rem 0 0.3rem; }
 .eintrag .antwort { margin: 0; }
 .eintrag .quelle { display: inline-block; margin-top: 0.4rem; font-size: 0.85rem; }
 .eintrag .quelle a { color: var(--akzent); }
+.eintrag .vorlesen {
+  display: inline-block; margin-top: 0.5rem; font: inherit; font-size: 0.85rem;
+  background: #fff; color: var(--akzent); border: 1px solid var(--akzent);
+  border-radius: 6px; padding: 0.25rem 0.7rem; cursor: pointer;
+}
 
 #rechner-section form {
   display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem 1rem; align-items: center;

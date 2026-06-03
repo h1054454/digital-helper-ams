@@ -31,7 +31,8 @@ const UI = {
     datenschutz: "Datenschutz: Diese Seite setzt keine Cookies, bindet keine Tracker oder Analyse-Dienste ein und sammelt keine personenbezogenen Daten. Alles läuft in Ihrem Browser. Erst wenn Sie auf eine Quelle klicken, öffnet sich das RIS.",
     kontakt: "Für verbindliche Auskünfte und Anträge wenden Sie sich an das AMS, persönlich oder über das eAMS-Konto.",
     amsLink: "Zum AMS (ams.at)",
-    bfLink: "Barrierefreiheitserklärung"
+    bfLink: "Barrierefreiheitserklärung",
+    vorlesen: "Vorlesen"
   },
   en: {
     skip: "Skip to content",
@@ -60,7 +61,8 @@ const UI = {
     datenschutz: "Privacy: this site sets no cookies, embeds no trackers or analytics, and collects no personal data. Everything runs in your browser. Only when you click a source does RIS open.",
     kontakt: "For binding information and applications, contact the AMS, in person or via the eAMS account.",
     amsLink: "Go to the AMS (ams.at)",
-    bfLink: "Accessibility statement"
+    bfLink: "Accessibility statement",
+    vorlesen: "Read aloud"
   },
   tr: {
     skip: "İçeriğe geç",
@@ -89,12 +91,23 @@ const UI = {
     datenschutz: "Veri koruma: Bu site çerez kullanmaz, izleyici veya analiz hizmeti içermez ve kişisel veri toplamaz. Her şey tarayıcınızda çalışır. Yalnızca bir kaynağa tıkladığınızda RIS açılır.",
     kontakt: "Bağlayıcı bilgi ve başvurular için AMS'ye şahsen veya eAMS hesabı üzerinden başvurun.",
     amsLink: "AMS'ye git (ams.at)",
-    bfLink: "Erişilebilirlik beyanı"
+    bfLink: "Erişilebilirlik beyanı",
+    vorlesen: "Sesli oku"
   }
 };
 
 // Sprachen mit Rechts-nach-links-Schrift (für kuenftiges Arabisch usw.)
 const RTL_SPRACHEN = new Set(["ar", "he", "fa", "ur"]);
+
+// Sprachen mit vorab erzeugtem Vorlese-Audio (lokale MP3, kein Datenabfluss)
+const AUDIO_SPRACHEN = new Set(["de"]);
+let audioPlayer = null;
+
+function spieleAudio(id) {
+  if (audioPlayer) { audioPlayer.pause(); }
+  audioPlayer = new Audio("audio/" + SPRACHE + "/" + id + ".mp3");
+  audioPlayer.play();
+}
 
 let DATEN = null;
 let SPRACHE = "de";
@@ -178,6 +191,15 @@ function rendereFaq(filter) {
     d.querySelector(".formulierungen").textContent = e.formulierungen.slice(1).join("  /  ");
     d.querySelector(".antwort").textContent = e.antwort;
     d.querySelector(".quelle").innerHTML = t.quelle + ": " + quelleHtml(e.quelle);
+    if (AUDIO_SPRACHEN.has(SPRACHE)) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "vorlesen";
+      btn.textContent = "🔊 " + t.vorlesen;
+      btn.setAttribute("aria-label", t.vorlesen);
+      btn.addEventListener("click", () => spieleAudio(e.id));
+      d.appendChild(btn);
+    }
     box.appendChild(d);
   });
 }
