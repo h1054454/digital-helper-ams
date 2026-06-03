@@ -49,8 +49,34 @@ const UI = {
     resBrutto: "Gross input", resNetto: "Calculated net",
     resAlg: "Unemployment benefit", resTag: "per day", resMon: "per month",
     resDauer: "Duration", resWochen: "weeks", resNh: "Emergency assistance after", resStand: "Values as of"
+  },
+  tr: {
+    skip: "İçeriğe geç",
+    langLabel: "Dil",
+    prototyp: "Demo ve prototip. Hukuki danışmanlık değildir. Şüphe halinde AMS'ye danışın.",
+    suche: "Bir soru yazın, örneğin: Ne kadar para alırım?",
+    sucheLabel: "Soru ara",
+    treffer: n => n === 1 ? "1 sonuç" : n + " sonuç",
+    keinTreffer: "Uygun soru bulunamadı. Lütfen AMS'ye danışın.",
+    rechnerTitel: "Ne kadar ve ne kadar süre? (tahmin)",
+    rechnerHinweis: "Bağlayıcı olmayan tahmin, resmi karar değil. Değerler 2026 itibarıyla.",
+    modus: "Giriş", modusNetto: "Net gelir", modusBrutto: "Brüt gelir",
+    einkommenNetto: "Aylık net gelir (Euro)",
+    einkommenBrutto: "Aylık brüt gelir (Euro)",
+    bundesland: "Eyalet (net hesaplama için)",
+    kinder: "Zamlı çocuk sayısı",
+    partner: "Kendi geliri olmayan eş",
+    alter: "Yaş", wochen: "Sigortalı haftalar", rechnen: "Hesapla",
+    quelle: "Kaynak", quelleNeu: "(yasayı RIS'te açar)",
+    footer: "Demo ve prototip. AMS danışmanlığının yerini tutmaz. Yürürlükteki sürüm geçerlidir.",
+    resBrutto: "Girilen brüt", resNetto: "Hesaplanan net",
+    resAlg: "İşsizlik parası", resTag: "günlük", resMon: "aylık",
+    resDauer: "Süre", resWochen: "hafta", resNh: "Sonrasında acil yardım", resStand: "Değerler itibarıyla"
   }
 };
+
+// Sprachen mit Rechts-nach-links-Schrift (fuer kuenftiges Arabisch usw.)
+const RTL_SPRACHEN = new Set(["ar", "he", "fa", "ur"]);
 
 let DATEN = null;
 let SPRACHE = "de";
@@ -69,6 +95,7 @@ async function ladeSprache(lang) {
   DATEN = await resp.json();
   SPRACHE = lang;
   document.documentElement.lang = lang;
+  document.documentElement.dir = RTL_SPRACHEN.has(lang) ? "rtl" : "ltr";
   rendereChrome();
   rendereFaq(document.getElementById("suche").value);
 }

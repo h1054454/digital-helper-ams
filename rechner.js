@@ -1,33 +1,14 @@
 // AMS-Rechner als JavaScript fuer die statische Webseite. Unverbindliche Schaetzung.
 // Rechtsgrundlage AMS: Hoehe Paragraf 21, Familienzuschlag Paragraf 20, Dauer Paragraf 18,
-// Notstandshilfe Paragraf 36 AlVG. Jahreswerte Stand 2026.
+// Notstandshilfe Paragraf 36 AlVG. Brutto-zu-Netto nach der Lohnverrechnungs-Engine portiert.
 //
-// Die Brutto-zu-Netto-Umrechnung ist nach der Lohnverrechnungs-Engine portiert
-// (accounting-agent/lohnverrechnung, gegen echte Lohnzettel und AK-Rechner geeicht).
-// Die Werte unten spiegeln rates.py (Jahr 2026) und gehoeren jaehrlich aktualisiert.
+// Alle Jahreswerte kommen aus window.WEB_RATES (Datei rechner-rates.js), die per
+// gen_web_rates.py aus den Python-Satztabellen erzeugt wird. Eine Quelle der Wahrheit.
 
-const AMS_RATES = {
-  stand: "2026",
-  ausgleichszulagenrichtsatz_monatlich: 1308.39,
-  familienzuschlag_taeglich: 0.97,
-  nettoersatzrate: 0.55,
-  deckel_ohne_familie: 0.60,
-  deckel_mit_familie: 0.80,
-  nh_hoch: 0.95,
-  nh_nieder: 0.92
-};
-
-// Lohnverrechnung 2026 (aus rates.py, Jahr 2026)
-const LV_RATES_2026 = {
-  wkp: 132.0,                         // Werbungskostenpauschale, Paragraf 16 EStG
-  sv_basis_ohne_alv_wbf: 0.1462,      // KV 3,87 + PV 10,25 + AK 0,5
-  wbf_dn_std: 0.005,
-  wbf_dn_wien: 0.0075,                // Wien ab 2026
-  alv_gleitzone: [[2225, 0.0], [2427, 0.01], [2630, 0.02], [Infinity, 0.0295]],
-  hbgl_monatlich: 6930.0,
-  vab: 496.0,                         // Verkehrsabsetzbetrag
-  brackets: [[13539, 0.0], [21992, 0.20], [36458, 0.30], [70365, 0.40], [104859, 0.48], [1000000, 0.50], [Infinity, 0.55]]
-};
+const _W = (typeof window !== "undefined" && window.WEB_RATES) ? window.WEB_RATES : null;
+const AMS_RATES = _W ? _W.ams : {};
+const LV_RATES = _W ? _W.lv : {};
+const STAND = _W ? _W.stand : "?";
 
 function r2(x) { return Math.round(x * 100) / 100; }
 
@@ -40,34 +21,33 @@ function bezugsdauerWochen(alter, wochen, reha) {
 }
 
 // --- Brutto zu Netto (Lohnverrechnung) ---
-function alvSatz(bruttoMonat, R) {
-  for (const [grenze, satz] of R.alv_gleitzone) { if (bruttoMonat <= grenze) return satz; }
+function alvSatz(bruttoMonat) {
+  for (const [grenze, satz] of LV_RATES.alv_gleitzone) { if (bruttoMonat <= grenze) return satz; }
   return 0.0295;
 }
-function svDnLaufend(bruttoMonat, bundesland, R) {
-  const bg = Math.min(bruttoMonat, R.hbgl_monatlich);
-  const wbf = (bundesland === "W") ? R.wbf_dn_wien : R.wbf_dn_std;
-  const satz = R.sv_basis_ohne_alv_wbf + wbf + alvSatz(bruttoMonat, R);
+function svDnLaufend(bruttoMonat, bundesland) {
+  const bg = Math.min(bruttoMonat, LV_RATES.hbgl_monatlich);
+  const wbf = (bundesland === "W") ? LV_RATES.wbf_dn_wien : LV_RATES.wbf_dn_std;
+  const satz = LV_RATES.sv_basis_ohne_alv_wbf + wbf + alvSatz(bruttoMonat);
   return r2(bg * satz);
 }
-function tarifJahr(eink, R) {
+function tarifJahr(eink) {
   let t = 0, low = 0;
-  for (const [grenze, satz] of R.brackets) {
+  for (const [grenze, satz] of LV_RATES.brackets) {
     if (eink > low) { t += (Math.min(eink, grenze) - low) * satz; low = grenze; } else break;
   }
   return t;
 }
-function lstLaufend(bmgMonat, R) {
+function lstLaufend(bmgMonat) {
   const faktor = 12.0;
-  const e = bmgMonat * faktor - R.wkp;
-  const lstJahr = tarifJahr(e, R) - R.vab;
+  const e = bmgMonat * faktor - LV_RATES.wkp;
+  const lstJahr = tarifJahr(e) - LV_RATES.vab;
   return r2(Math.max(0, lstJahr / faktor));
 }
 function bruttoZuNetto(bruttoMonat, bundesland) {
-  const R = LV_RATES_2026;
-  const sv = svDnLaufend(bruttoMonat, bundesland, R);
+  const sv = svDnLaufend(bruttoMonat, bundesland);
   const bmg = r2(bruttoMonat - sv);
-  const lst = lstLaufend(bmg, R);
+  const lst = lstLaufend(bmg);
   return r2(bruttoMonat - sv - lst);
 }
 
@@ -86,7 +66,7 @@ function arbeitslosengeld(nettoMonatlich, kinder, partner, alter, wochen, reha) 
   const ergTag = gpeTag - grundTag;
   const famTag = r.familienzuschlag_taeglich * angehoerige;
   const algTag = gpeTag + famTag;
-  const nhFaktor = grundTag <= richtTag ? r.nh_hoch : r.nh_nieder;
+  const nhFaktor = grundTag <= richtTag ? r.notstandshilfe_hoch : r.notstandshilfe_nieder;
   const nhTag = nhFaktor * grundTag + famTag;
   return {
     algTaeglich: r2(algTag),
@@ -96,13 +76,13 @@ function arbeitslosengeld(nettoMonatlich, kinder, partner, alter, wochen, reha) 
     famMonatlich: r2(famTag * TAGE_MONAT),
     nhMonatlich: r2(nhTag * TAGE_MONAT),
     dauerWochen: bezugsdauerWochen(alter, wochen, reha),
-    stand: r.stand
+    stand: STAND
   };
 }
 
 // --- Arbeitslosengeld aus Brutto (mit Netto-Umrechnung + Hoechstbeitragsgrundlage) ---
 function arbeitslosengeldAusBrutto(bruttoMonat, bundesland, kinder, partner, alter, wochen, reha) {
-  const bruttoFuerAms = Math.min(bruttoMonat, LV_RATES_2026.hbgl_monatlich);
+  const bruttoFuerAms = Math.min(bruttoMonat, LV_RATES.hbgl_monatlich);
   const netto = bruttoZuNetto(bruttoFuerAms, bundesland);
   const z = arbeitslosengeld(netto, kinder, partner, alter, wochen, reha);
   z.eingabeBrutto = r2(bruttoMonat);
