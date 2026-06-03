@@ -63,4 +63,7 @@ h3 { font-size: 1rem; margin: 1.4rem 0 0.3rem; }
   background: #fff; border: 1px solid var(--linie); border-radius: 8px; padding: 1rem;
   white-space: pre-wrap; font-family: inherit; max-width: 520px; min-height: 1.2em;
 }
+#info-section { border-top: 1px solid var(--linie); margin-top: 2.4rem; padding-top: 1.2rem; }
+#info-section a, footer a, header .bar a { color: var(--akzent); }
 footer { max-width: 820px; margin: 2rem auto; padding: 0 1rem; }
+footer p { margin: 0.3rem 0; }

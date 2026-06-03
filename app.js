@@ -12,20 +12,26 @@ const UI = {
     sucheLabel: "Frage suchen",
     treffer: n => n === 1 ? "1 Treffer" : n + " Treffer",
     keinTreffer: "Keine passende Frage gefunden. Bitte beim AMS nachfragen.",
-    rechnerTitel: "Wie viel und wie lange? (Schaetzung)",
-    rechnerHinweis: "Unverbindliche Schaetzung, nicht der Bescheid. Werte Stand 2026.",
+    rechnerTitel: "Wie viel und wie lange? (Schätzung)",
+    rechnerHinweis: "Unverbindliche Schätzung, nicht der Bescheid. Werte Stand 2026.",
     modus: "Eingabe", modusNetto: "Nettoeinkommen", modusBrutto: "Bruttoeinkommen",
     einkommenNetto: "Monatliches Nettoeinkommen (Euro)",
     einkommenBrutto: "Monatliches Bruttoeinkommen (Euro)",
-    bundesland: "Bundesland (fuer die Netto-Berechnung)",
+    bundesland: "Bundesland (für die Netto-Berechnung)",
     kinder: "Anzahl Kinder mit Zuschlag",
     partner: "Partner ohne eigenes Einkommen",
     alter: "Alter", wochen: "Versicherungswochen", rechnen: "Berechnen",
-    quelle: "Quelle", quelleNeu: "(oeffnet das Gesetz im RIS)",
-    footer: "Demo und Prototyp. Kein Ersatz fuer die Beratung durch das AMS. Massgeblich ist die geltende Fassung.",
+    quelle: "Quelle", quelleNeu: "(öffnet das Gesetz im RIS)",
+    footer: "Demo und Prototyp. Kein Ersatz für die Beratung durch das AMS. Maßgeblich ist die geltende Fassung.",
     resBrutto: "Eingabe Brutto", resNetto: "Berechnetes Netto",
     resAlg: "Arbeitslosengeld", resTag: "pro Tag", resMon: "pro Monat",
-    resDauer: "Bezugsdauer", resWochen: "Wochen", resNh: "Notstandshilfe danach", resStand: "Werte Stand"
+    resDauer: "Bezugsdauer", resWochen: "Wochen", resNh: "Notstandshilfe danach", resStand: "Werte Stand",
+    infoTitel: "So funktioniert dieser Helfer",
+    transparenz: "Die Antworten sind aus dem Gesetzestext zusammengefasst, jede mit Quelle zum Nachlesen im RIS, und gegen RIS und AMS geprüft. Stand 2026. Dies ist ein Prototyp und ersetzt keine Beratung durch das AMS.",
+    datenschutz: "Datenschutz: Diese Seite setzt keine Cookies, bindet keine Tracker oder Analyse-Dienste ein und sammelt keine personenbezogenen Daten. Alles läuft in Ihrem Browser. Erst wenn Sie auf eine Quelle klicken, öffnet sich das RIS.",
+    kontakt: "Für verbindliche Auskünfte und Anträge wenden Sie sich an das AMS, persönlich oder über das eAMS-Konto.",
+    amsLink: "Zum AMS (ams.at)",
+    bfLink: "Barrierefreiheitserklärung"
   },
   en: {
     skip: "Skip to content",
@@ -48,7 +54,13 @@ const UI = {
     footer: "Demo and prototype. Not a substitute for advice from the AMS. The version in force applies.",
     resBrutto: "Gross input", resNetto: "Calculated net",
     resAlg: "Unemployment benefit", resTag: "per day", resMon: "per month",
-    resDauer: "Duration", resWochen: "weeks", resNh: "Emergency assistance after", resStand: "Values as of"
+    resDauer: "Duration", resWochen: "weeks", resNh: "Emergency assistance after", resStand: "Values as of",
+    infoTitel: "How this helper works",
+    transparenz: "The answers are summarised from the law, each with a source to look up on RIS, and checked against RIS and the AMS. As of 2026. This is a prototype and does not replace advice from the AMS.",
+    datenschutz: "Privacy: this site sets no cookies, embeds no trackers or analytics, and collects no personal data. Everything runs in your browser. Only when you click a source does RIS open.",
+    kontakt: "For binding information and applications, contact the AMS, in person or via the eAMS account.",
+    amsLink: "Go to the AMS (ams.at)",
+    bfLink: "Accessibility statement"
   },
   tr: {
     skip: "İçeriğe geç",
@@ -71,11 +83,17 @@ const UI = {
     footer: "Demo ve prototip. AMS danışmanlığının yerini tutmaz. Yürürlükteki sürüm geçerlidir.",
     resBrutto: "Girilen brüt", resNetto: "Hesaplanan net",
     resAlg: "İşsizlik parası", resTag: "günlük", resMon: "aylık",
-    resDauer: "Süre", resWochen: "hafta", resNh: "Sonrasında acil yardım", resStand: "Değerler itibarıyla"
+    resDauer: "Süre", resWochen: "hafta", resNh: "Sonrasında acil yardım", resStand: "Değerler itibarıyla",
+    infoTitel: "Bu yardımcı nasıl çalışır",
+    transparenz: "Cevaplar yasa metninden özetlenmiştir, her biri RIS'te incelenebilecek bir kaynakla, ve RIS ile AMS'ye karşı kontrol edilmiştir. 2026 itibarıyla. Bu bir prototiptir ve AMS danışmanlığının yerini tutmaz.",
+    datenschutz: "Veri koruma: Bu site çerez kullanmaz, izleyici veya analiz hizmeti içermez ve kişisel veri toplamaz. Her şey tarayıcınızda çalışır. Yalnızca bir kaynağa tıkladığınızda RIS açılır.",
+    kontakt: "Bağlayıcı bilgi ve başvurular için AMS'ye şahsen veya eAMS hesabı üzerinden başvurun.",
+    amsLink: "AMS'ye git (ams.at)",
+    bfLink: "Erişilebilirlik beyanı"
   }
 };
 
-// Sprachen mit Rechts-nach-links-Schrift (fuer kuenftiges Arabisch usw.)
+// Sprachen mit Rechts-nach-links-Schrift (für kuenftiges Arabisch usw.)
 const RTL_SPRACHEN = new Set(["ar", "he", "fa", "ur"]);
 
 let DATEN = null;
@@ -112,6 +130,12 @@ function rendereChrome() {
   document.getElementById("rechner-titel").textContent = t.rechnerTitel;
   document.getElementById("rechner-hinweis").textContent = t.rechnerHinweis;
   document.getElementById("footer").textContent = t.footer;
+  document.getElementById("info-titel").textContent = t.infoTitel;
+  document.getElementById("transparenz").textContent = t.transparenz;
+  document.getElementById("datenschutz").textContent = t.datenschutz;
+  document.getElementById("kontakt").textContent = t.kontakt;
+  document.getElementById("ams-link").textContent = t.amsLink;
+  document.getElementById("bf-link").textContent = t.bfLink;
   document.querySelectorAll("[data-l]").forEach(el => { el.textContent = t[el.dataset.l]; });
   aktualisiereEinkommenLabel();
 }
