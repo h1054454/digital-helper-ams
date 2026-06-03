@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AMS Digital Helper (Demo)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <strong id="brand">AMS Digital Helper</strong>
+      <label class="lang">
+        <span id="lang-label">Sprache</span>
+        <select id="lang">
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+        </select>
+      </label>
+    </div>
+    <p id="prototyp" class="warn"></p>
+  </header>
+
+  <main>
+    <section id="faq-section">
+      <h1 id="titel"></h1>
+      <p id="hinweis" class="muted"></p>
+      <input id="suche" type="search" autocomplete="off">
+      <div id="faq"></div>
+    </section>
+
+    <section id="rechner-section">
+      <h2 id="rechner-titel"></h2>
+      <p id="rechner-hinweis" class="muted"></p>
+      <form id="rechner-form">
+        <label data-l="netto"></label>
+        <input id="r-netto" type="number" min="0" step="50" value="2000">
+        <label data-l="kinder"></label>
+        <input id="r-kinder" type="number" min="0" step="1" value="0">
+        <label class="check"><input id="r-partner" type="checkbox"> <span data-l="partner"></span></label>
+        <label data-l="alter"></label>
+        <input id="r-alter" type="number" min="0" step="1" value="40">
+        <label data-l="wochen"></label>
+        <input id="r-wochen" type="number" min="0" step="1" value="200">
+        <button type="submit" data-l="rechnen"></button>
+      </form>
+      <pre id="rechner-out"></pre>
+    </section>
+  </main>
+
+  <footer><p id="footer" class="muted"></p></footer>
+
+  <script src="rechner.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

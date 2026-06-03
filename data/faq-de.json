@@ -1,0 +1,284 @@
+{
+  "helfer": "ams-alvg",
+  "titel": "AMS und Arbeitslosengeld: häufige Fragen in Klartext",
+  "stand": "2026-06",
+  "sprache": "de",
+  "hinweis": "Demo und Prototyp. Orientierung, kein Ersatz für die Beratung durch das AMS. Beträge und Grenzen werden jährlich angepasst.",
+  "modell": "Pro Antwort (entdoppelte Substanz) mehrere echte Nutzer-Formulierungen. Egal wie gefragt wird, es kommt dieselbe richtige, belegte Antwort.",
+  "eintraege": [
+    {
+      "id": "antrag",
+      "kategorie": "Antrag",
+      "antwort": "Sie melden sich beim AMS und stellen den Antrag über das eAMS-Konto. Beim ersten Mal müssen Sie persönlich vorbeikommen.",
+      "quelle": "§ 46 AlVG",
+      "formulierungen": [
+        "Wie melde ich mich beim AMS?",
+        "Wo bekomme ich Arbeitslosengeld?",
+        "Was muss ich tun, wenn ich meinen Job verloren habe?",
+        "Wie beantrage ich Arbeitslosengeld?"
+      ]
+    },
+    {
+      "id": "voraussetzungen",
+      "kategorie": "Anspruch",
+      "antwort": "Sie müssen dem AMS zur Verfügung stehen, vorher genug versichert gearbeitet haben und die Bezugsdauer darf noch nicht aufgebraucht sein.",
+      "quelle": "§ 7 AlVG",
+      "formulierungen": [
+        "Habe ich Anspruch auf Arbeitslosengeld?",
+        "Bekomme ich überhaupt Geld vom AMS?",
+        "Wer hat Anrecht auf Arbeitslosengeld?",
+        "Was brauche ich für das Arbeitslosengeld?"
+      ]
+    },
+    {
+      "id": "anwartschaft",
+      "kategorie": "Anspruch",
+      "antwort": "Beim ersten Mal 52 Wochen Arbeit in den letzten 24 Monaten. Unter 25 Jahren 26 Wochen in 12 Monaten. Bei jedem weiteren Mal 28 Wochen in 12 Monaten.",
+      "quelle": "§ 14 AlVG",
+      "formulierungen": [
+        "Wie lange muss ich gearbeitet haben?",
+        "Reicht ein halbes Jahr Arbeit?",
+        "Wieviel muss ich eingezahlt haben?",
+        "Was ist die Anwartschaft?"
+      ]
+    },
+    {
+      "id": "beginn",
+      "kategorie": "Antrag",
+      "antwort": "Ab dem Tag, an dem Sie den Antrag stellen. Wenn Sie noch eine Kündigungsentschädigung oder Urlaubsersatz bekommen, ruht das Geld so lange.",
+      "quelle": "§ 16 und § 17 AlVG",
+      "formulierungen": [
+        "Wann kommt das erste Geld?",
+        "Ab wann zahlt das AMS?",
+        "Wie schnell bekomme ich Arbeitslosengeld?",
+        "Warum bekomme ich noch kein Geld?"
+      ]
+    },
+    {
+      "id": "hoehe",
+      "kategorie": "Höhe",
+      "antwort": "Ungefähr 55 Prozent von Ihrem letzten Nettolohn, dazu Zuschläge für Kinder. Für eine genaue Zahl gibt es den Rechner.",
+      "quelle": "§ 20 und § 21 AlVG",
+      "formulierungen": [
+        "Wie viel Geld kriege ich vom AMS?",
+        "Wieviel ist das Arbeitslosengeld?",
+        "Was zahlt das AMS im Monat?",
+        "Wie hoch ist mein Arbeitslosengeld?"
+      ]
+    },
+    {
+      "id": "familienzuschlag",
+      "kategorie": "Höhe",
+      "antwort": "Ja, es gibt einen Familienzuschlag für Kinder und für einen Partner ohne eigenes Einkommen.",
+      "quelle": "§ 20 AlVG",
+      "formulierungen": [
+        "Gibt es Zuschläge für Kinder?",
+        "Bekomme ich mehr, weil ich eine Familie habe?",
+        "Zahlt das AMS extra für Kinder?"
+      ]
+    },
+    {
+      "id": "dauer",
+      "kategorie": "Dauer",
+      "antwort": "Meist 20 Wochen. Mit längerer Versicherung 30 Wochen, ab 40 Jahren 39 Wochen, ab 50 Jahren 52 Wochen.",
+      "quelle": "§ 18 AlVG",
+      "formulierungen": [
+        "Wie lange zahlt das AMS?",
+        "Wie viele Wochen bekomme ich Geld?",
+        "Wann hört das Arbeitslosengeld auf?",
+        "Wie lange steht mir das zu?"
+      ]
+    },
+    {
+      "id": "fortbezug",
+      "kategorie": "Dauer",
+      "antwort": "Ein nicht aufgebrauchter Anspruch kann innerhalb von 5 Jahren weiterlaufen, solange Sie keine neue Anwartschaft erworben haben.",
+      "quelle": "§ 19 AlVG",
+      "formulierungen": [
+        "Kriege ich mein altes Arbeitslosengeld wieder?",
+        "Was passiert mit dem Rest, wenn ich wieder arbeitslos werde?",
+        "Lebt mein alter Anspruch wieder auf?"
+      ]
+    },
+    {
+      "id": "pflichten",
+      "kategorie": "Pflichten",
+      "antwort": "Zu den Kontrollterminen kommen, sich bewerben, erreichbar sein und jede Änderung sofort melden.",
+      "quelle": "§ 9, § 49 und § 50 AlVG",
+      "formulierungen": [
+        "Was sind meine Pflichten beim AMS?",
+        "Muss ich mich bewerben?",
+        "Was passiert, wenn ich einen Termin verpasse?",
+        "Wie behalte ich mein Arbeitslosengeld?"
+      ]
+    },
+    {
+      "id": "sperre-selbstkuendigung",
+      "kategorie": "Sperren",
+      "antwort": "Bei eigener Kündigung gibt es eine Sperre von 4 Wochen. In begründeten Fällen ist eine Nachsicht möglich.",
+      "quelle": "§ 11 AlVG",
+      "formulierungen": [
+        "Krieg ich Geld, wenn ich selber kündige?",
+        "Was ist, wenn ich den Job freiwillig aufgebe?",
+        "Sperre nach einvernehmlicher Auflösung?",
+        "Bekomme ich Arbeitslosengeld nach Eigenkündigung?"
+      ]
+    },
+    {
+      "id": "sperre-ablehnung",
+      "kategorie": "Sperren",
+      "antwort": "Wer eine zumutbare Stelle oder eine Schulung ohne guten Grund ablehnt, verliert das Geld für mindestens 6 Wochen.",
+      "quelle": "§ 10 AlVG",
+      "formulierungen": [
+        "Muss ich jeden Job annehmen?",
+        "Was ist, wenn ich einen Kurs ablehne?",
+        "Wird mir das Geld gestrichen, wenn ich Nein sage?"
+      ]
+    },
+    {
+      "id": "zumutbar",
+      "kategorie": "Sperren",
+      "antwort": "Eine Stelle, die zu Ihnen passt, ordentlich bezahlt ist und in zumutbarer Entfernung liegt. Am Anfang sind Sie vor schlecht bezahlten und berufsfremden Stellen geschützt.",
+      "quelle": "§ 9 AlVG",
+      "formulierungen": [
+        "Muss ich unter meinem Niveau arbeiten?",
+        "Darf das AMS mich überallhin schicken?",
+        "Was ist eine zumutbare Arbeit?"
+      ]
+    },
+    {
+      "id": "zuverdienst",
+      "kategorie": "Geld dazuverdienen",
+      "antwort": "Seit 2026 ist ein geringfügiger Zuverdienst während des Bezugs grundsätzlich nicht mehr möglich. Es gibt nur wenige Ausnahmen. Melden Sie jede Tätigkeit auf jeden Fall sofort dem AMS.",
+      "quelle": "§ 12 AlVG (Budgetbegleitgesetz 2025)",
+      "formulierungen": [
+        "Darf ich nebenbei was dazuverdienen?",
+        "Kann ich geringfügig arbeiten und trotzdem Arbeitslosengeld bekommen?",
+        "Ist ein kleiner Job erlaubt?",
+        "Was darf ich dazuverdienen?"
+      ]
+    },
+    {
+      "id": "schwarzarbeit",
+      "kategorie": "Geld dazuverdienen",
+      "antwort": "Wird eine nicht gemeldete Tätigkeit aufgedeckt, müssen Sie mindestens für 4 Wochen Geld zurückzahlen.",
+      "quelle": "§ 25 AlVG",
+      "formulierungen": [
+        "Was ist, wenn ich schwarz arbeite?",
+        "Erfährt das AMS, wenn ich nebenbei arbeite?",
+        "Was droht bei nicht gemeldeter Arbeit?"
+      ]
+    },
+    {
+      "id": "krankheit",
+      "kategorie": "Besondere Fälle",
+      "antwort": "Wenn Sie Krankengeld bekommen, ruht das Arbeitslosengeld in dieser Zeit.",
+      "quelle": "§ 16 AlVG",
+      "formulierungen": [
+        "Bekomme ich Geld, wenn ich im Krankenstand bin?",
+        "Was passiert beim AMS, wenn ich krank bin?",
+        "Arbeitslos und krank, was nun?"
+      ]
+    },
+    {
+      "id": "krankenversicherung",
+      "kategorie": "Besondere Fälle",
+      "antwort": "Ja. Während Sie Arbeitslosengeld oder Notstandshilfe bekommen, sind Sie kranken- und unfallversichert.",
+      "quelle": "§ 40 ff. AlVG",
+      "formulierungen": [
+        "Habe ich eine Krankenversicherung beim AMS?",
+        "Bin ich versichert, wenn ich arbeitslos bin?",
+        "Gilt meine e-card weiter?"
+      ]
+    },
+    {
+      "id": "ausland",
+      "kategorie": "Besondere Fälle",
+      "antwort": "Bei einem Auslandsaufenthalt ruht das Geld grundsätzlich. Für die Jobsuche in der EU gibt es Sonderregeln, die Sie vorher mit dem AMS klären müssen.",
+      "quelle": "§ 16 AlVG",
+      "formulierungen": [
+        "Darf ich mit Arbeitslosengeld verreisen?",
+        "Bekomme ich Geld, wenn ich im Ausland Arbeit suche?",
+        "Was ist, wenn ich umziehe?"
+      ]
+    },
+    {
+      "id": "pension",
+      "kategorie": "Besondere Fälle",
+      "antwort": "Wer eine Alterspension bekommt oder ihre Voraussetzungen erfüllt, hat keinen Anspruch. Wer eine Pension beantragt hat, kann bis zur Entscheidung einen Vorschuss bekommen.",
+      "quelle": "§ 22 und § 23 AlVG",
+      "formulierungen": [
+        "Arbeitslos kurz vor der Pension?",
+        "Geht Arbeitslosengeld und Pension zusammen?",
+        "Was ist ein Pensionsvorschuss?"
+      ]
+    },
+    {
+      "id": "notstandshilfe",
+      "kategorie": "Nach dem Arbeitslosengeld",
+      "antwort": "Dann gibt es auf Antrag Notstandshilfe, wenn Sie in einer Notlage sind und weiter dem AMS zur Verfügung stehen.",
+      "quelle": "§ 33 AlVG",
+      "formulierungen": [
+        "Was kommt nach dem Arbeitslosengeld?",
+        "Mein Arbeitslosengeld läuft aus, was nun?",
+        "Was ist Notstandshilfe?"
+      ]
+    },
+    {
+      "id": "notstandshilfe-hoehe",
+      "kategorie": "Nach dem Arbeitslosengeld",
+      "antwort": "Etwa 92 bis 95 Prozent vom Grundbetrag des letzten Arbeitslosengeldes. Sie wird befristet gewährt, aber immer wieder verlängert.",
+      "quelle": "§ 35 und § 36 AlVG",
+      "formulierungen": [
+        "Wie hoch ist die Notstandshilfe?",
+        "Bekomme ich gleich viel wie beim Arbeitslosengeld?",
+        "Wie lange gibt es Notstandshilfe?"
+      ]
+    },
+    {
+      "id": "partnereinkommen",
+      "kategorie": "Nach dem Arbeitslosengeld",
+      "antwort": "Seit 2018 grundsätzlich nicht mehr. Eigenes Einkommen über der Geringfügigkeitsgrenze kann die Notstandshilfe aber mindern.",
+      "quelle": "§ 36 AlVG",
+      "formulierungen": [
+        "Zählt das Gehalt meiner Frau?",
+        "Bekomme ich weniger, weil mein Mann arbeitet?",
+        "Wird das Partnereinkommen abgezogen?"
+      ]
+    },
+    {
+      "id": "foerderung",
+      "kategorie": "Förderungen und Kurse",
+      "antwort": "Auf Förderungen gibt es keinen Rechtsanspruch. Das AMS entscheidet nach Richtlinien, welche Beihilfe oder welcher Kurs passt.",
+      "quelle": "§ 34 AMSG",
+      "formulierungen": [
+        "Bezahlt das AMS einen Kurs?",
+        "Bekomme ich eine Umschulung?",
+        "Habe ich ein Recht auf Förderung?",
+        "Was zahlt das AMS für Weiterbildung?"
+      ]
+    },
+    {
+      "id": "bescheid",
+      "kategorie": "Verfahren",
+      "antwort": "Sie können innerhalb von 3 Monaten einen Bescheid verlangen und dagegen Beschwerde beim Bundesverwaltungsgericht erheben.",
+      "quelle": "§ 47 und § 56 AlVG",
+      "formulierungen": [
+        "Mein Arbeitslosengeld ist zu wenig, was kann ich machen?",
+        "Kann ich gegen das AMS Einspruch erheben?",
+        "Wie wehre ich mich gegen die Entscheidung?"
+      ]
+    },
+    {
+      "id": "rueckzahlung",
+      "kategorie": "Verfahren",
+      "antwort": "Ja, wenn Sie zu Unrecht oder durch falsche Angaben Geld bekommen haben. Das AMS kann es auch mit laufenden Zahlungen verrechnen.",
+      "quelle": "§ 25 AlVG",
+      "formulierungen": [
+        "Warum soll ich Geld zurückzahlen?",
+        "Was ist eine Rückforderung?",
+        "Muss ich zu viel bezahltes Arbeitslosengeld zurückgeben?"
+      ]
+    }
+  ]
+}
