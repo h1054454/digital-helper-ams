@@ -99,8 +99,8 @@ const UI = {
 // Sprachen mit Rechts-nach-links-Schrift (für kuenftiges Arabisch usw.)
 const RTL_SPRACHEN = new Set(["ar", "he", "fa", "ur"]);
 
-// Sprachen mit vorab erzeugtem Vorlese-Audio (lokale MP3, kein Datenabfluss)
-const AUDIO_SPRACHEN = new Set(["de"]);
+// Sprachen mit vorab erzeugtem Vorlese-Audio (lokale MP3, kein Datenabfluss). Nur DE + EN.
+const AUDIO_SPRACHEN = new Set(["de", "en"]);
 let audioPlayer = null;
 
 function spieleAudio(id) {
@@ -188,7 +188,11 @@ function rendereFaq(filter) {
       '<p class="antwort"></p>' +
       '<span class="quelle"></span>';
     d.querySelector(".frage").textContent = e.formulierungen[0] || "";
-    d.querySelector(".formulierungen").textContent = e.formulierungen.slice(1).join("  /  ");
+    if (q) {
+      d.querySelector(".formulierungen").textContent = e.formulierungen.slice(1).join("  /  ");
+    } else {
+      d.querySelector(".formulierungen").remove();
+    }
     d.querySelector(".antwort").textContent = e.antwort;
     d.querySelector(".quelle").innerHTML = t.quelle + ": " + quelleHtml(e.quelle);
     if (AUDIO_SPRACHEN.has(SPRACHE)) {
@@ -214,7 +218,7 @@ function rechne(ev) {
   const alter = parseInt(document.getElementById("r-alter").value) || 0;
   const wochen = parseInt(document.getElementById("r-wochen").value) || 0;
   if (einkommen <= 0) return;
-  const eur = x => x.toFixed(2) + " EUR";
+  const eur = x => x.toLocaleString(SPRACHE, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " EUR";
   let z, kopf = "";
   if (modus === "brutto") {
     const bl = document.getElementById("r-bundesland").value;

@@ -3,7 +3,7 @@
   "titel": "AMS and unemployment benefit: common questions in plain language",
   "stand": "2026-06",
   "sprache": "en",
-  "hinweis": "Demo and prototype. Machine-assisted translation, not yet reviewed. Orientation only, not a substitute for advice from the AMS. Amounts and limits change every year.",
+  "hinweis": "Machine-assisted translation, not yet reviewed. Orientation only, not a substitute for advice from the AMS. Amounts and limits change every year.",
   "eintraege": [
     { "id": "antrag", "kategorie": "Application", "antwort": "You register with the AMS and file the application through the eAMS account. The first time, you must come in person.", "quelle": "§ 46 AlVG",
       "formulierungen": ["How do I register with the AMS?", "How do I apply for unemployment benefit?"] },

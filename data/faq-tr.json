@@ -3,7 +3,7 @@
   "titel": "AMS ve işsizlik parası: sade dilde sık sorulan sorular",
   "stand": "2026-06",
   "sprache": "tr",
-  "hinweis": "Demo ve prototip. Makine destekli çeviri, henüz kontrol edilmedi, anadili Türkçe olan biri tarafından gözden geçirilmelidir. Sadece yönlendirme amaçlıdır, AMS danışmanlığının yerini tutmaz. Tutarlar ve sınırlar her yıl değişir.",
+  "hinweis": "Makine destekli çeviri, henüz kontrol edilmedi, anadili Türkçe olan biri tarafından gözden geçirilmelidir. Sadece yönlendirme amaçlıdır, AMS danışmanlığının yerini tutmaz. Tutarlar ve sınırlar her yıl değişir.",
   "eintraege": [
     { "id": "antrag", "kategorie": "Başvuru", "antwort": "AMS'ye kaydolursunuz ve başvuruyu eAMS hesabı üzerinden yaparsınız. İlk seferde şahsen gelmeniz gerekir.", "quelle": "§ 46 AlVG", "formulierungen": ["AMS'ye nasıl kaydolurum?", "İşsizlik parası için nasıl başvururum?"] },
     { "id": "voraussetzungen", "kategorie": "Hak", "antwort": "AMS'ye hazır olmanız, yeterince sigortalı çalışmış olmanız ve azami sürenin henüz dolmamış olması gerekir.", "quelle": "§ 7 AlVG", "formulierungen": ["İşsizlik parası almaya hakkım var mı?", "AMS'den para alabilir miyim?"] },
